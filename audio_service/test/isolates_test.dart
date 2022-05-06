@@ -76,7 +76,8 @@ void main() {
           differentIsolate ? ' (different isolate)' : ' (same isolate)';
 
       test('init $isolateLabel', () async {
-        //expect(await proxy.playbackState.first, PlaybackState());
+        // copyWith to ignore the updateTime
+        expect((await proxy.playbackState.first).copyWith(), PlaybackState());
         expect(await proxy.queue.first, const <MediaItem>[]);
         expect(await proxy.queueTitle.first, '');
         expect(await proxy.mediaItem.first, null);
